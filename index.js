@@ -16,7 +16,7 @@ const nodemailer = require('nodemailer');
 mongoose.connect('mongodb://localhost:27017/hospital_management')
 
 const app = express()
-const PORT = process.env.PORT || process.env.PORT_INDEX;
+const PORT = process.env.PORT || 3000 ;
 app.use(cors({
     origin: [process.env.FRONTEND1, process.env.FRONTEND2],
     credentials: true,
