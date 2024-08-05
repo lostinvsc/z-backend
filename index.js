@@ -13,10 +13,13 @@ const USER = require('./Models/user.js')
 const SERVICE = require('./Models/service.js')
 const nodemailer = require('nodemailer');
 
-mongoose.connect('mongodb://localhost:27017/hospital_management')
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/hospital_management', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
 
 const app = express()
-const PORT = process.env.PORT || 3000 ;
+const PORT = process.env.PORT || process.env.INDEX_PORT || 10000 ;
 app.use(cors({
     origin: [process.env.FRONTEND1, process.env.FRONTEND2],
     credentials: true,
